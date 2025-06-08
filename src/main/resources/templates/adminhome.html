@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> <head th:insert="~{common :: commonHead}">
+  <title>Product Manager</title>
+</head>
+
+<body>
+<div class="container">
+  <h1 class="mt-5">Product List</h1>
+  <a th:href="@{/products}" class="btn btn-primary">Product List</a>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>USER ID</th>
+      <th>E-MAIL</th>
+      <th>PW</th>
+      <th>ROLE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+      <td th:text="${user.id}">USER ID</td>
+      <td th:text="${user.email}">E-MAIL</td>
+      <td th:text="${user.password}">PW</td>
+      <td th:if="${user.roles.size()==1}" th:text="ROLE_USER">ROLE</td>
+      <td th:if="${user.roles.size()==2}" th:text="ROLE_ADMIN">ROLE</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div th:insert="~{common :: commonScript}"></div>
+</body>
+</html>

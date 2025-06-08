@@ -1,5 +1,6 @@
 package kr.ac.hansung.cse.hellospringdatajpa.repo;
 
+import java.util.Optional;
 import kr.ac.hansung.cse.hellospringdatajpa.entity.Product;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,4 +17,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     //JPQL(Java Persistence Query Language)을 사용한  사용자 정의 쿼리, %는 0개 이상 문자와 일치
     @Query("select p from Product p where p.name like %?1%")
     List<Product> searchByName(String name);
+
+    Optional<Product> findByNameAndBrand(String name, String brand);
+
+  boolean existsByName(String name);
 }

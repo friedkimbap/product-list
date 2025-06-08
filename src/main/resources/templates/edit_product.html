@@ -18,22 +18,30 @@
           <label for="productId" class="form-label">Product ID:</label>
           <input type="text" id="productId" class="form-control" th:field="*{id}" readonly />
         </div>
-
+        <div th:if="${checkProductName}">
+          <span style="color: red">제품 이름을 입력하여주세요.</span>
+        </div>
         <div class="mb-3">
           <label for="productName" class="form-label">Product Name:</label>
           <input type="text" id="productName" class="form-control" th:field="*{name}" />
         </div>
-
+        <div th:if="${checkBrand}">
+          <span style="color: red">브랜드를 입력하여주세요.</span>
+        </div>
         <div class="mb-3">
           <label for="brand" class="form-label">Brand:</label>
           <input type="text" id="brand" class="form-control" th:field="*{brand}" />
         </div>
-
+        <div th:if="${checkMadeIn}">
+          <span style="color: red">제조 국가를 입력하여주세요.</span>
+        </div>
         <div class="mb-3">
           <label for="madeIn" class="form-label">Made In:</label>
           <input type="text" id="madeIn" class="form-control" th:field="*{madeIn}" />
         </div>
-
+        <div th:if="${checkPrice}">
+          <span style="color: red">가격은 0보다 커야됩니다.</span>
+        </div>
         <div class="mb-3">
           <label for="price" class="form-label">Price:</label>
           <input type="text" id="price" class="form-control" th:field="*{price}" />

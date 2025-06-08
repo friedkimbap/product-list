@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,6 +25,9 @@ class HelloSpringDataJpaApplicationTests {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private PasswordEncoder encoder;
 
     private static final Logger logger = LoggerFactory.getLogger(HelloSpringDataJpaApplicationTests.class);
 
@@ -121,5 +125,11 @@ class HelloSpringDataJpaApplicationTests {
         productList.forEach(product -> logger.info("--> {}", product));
 
         assertEquals(6, productList.size(), "Expected 6 product containing 'Air'");
+    }
+
+    @Test
+  public void generateHashedPassword() {
+      String pwd = encoder.encode("alicepw");
+      System.out.println(pwd);
     }
 }
